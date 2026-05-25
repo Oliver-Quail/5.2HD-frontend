@@ -11,7 +11,7 @@ interface pictureCardProps {
 const PictureCard = (props :pictureCardProps) => {
 
     return (
-        <Card>
+        <Card className="w-[25%]">
             <CardHeader>
                 <CardTitle>{props.piece.id}</CardTitle>
             </CardHeader>

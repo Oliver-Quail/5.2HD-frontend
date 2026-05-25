@@ -22,7 +22,7 @@ const MiniGallery = (props :miniGalleryProps) => {
         while(index < props.pieces.length) {
             temp.push(props.pieces[index]);
             
-            if(index%props.numberOfItems) {
+            if((index +1)%props.numberOfItems == 0 && index != 0) {
                 newPieceArray.push(temp);
                 temp = [];
             }
