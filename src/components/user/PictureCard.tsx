@@ -1,10 +1,10 @@
-import type { piece } from "@/types/piece";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import convertToSRC from "@/misc/imageConverter";
+import type { artefact } from "@/types/artefact";
 
 
 interface pictureCardProps {
-    piece :piece;
+    piece :artefact;
 }
 
 
@@ -13,10 +13,10 @@ const PictureCard = (props :pictureCardProps) => {
     return (
         <Card className="w-[25%]">
             <CardHeader>
-                <CardTitle>{props.piece.id}</CardTitle>
+                <CardTitle>{props.piece.name}</CardTitle>
             </CardHeader>
             <CardContent>
-                <img src={convertToSRC(props.piece.image)} />
+                <img src={convertToSRC(props.piece.picture)} />
             </CardContent>
         </Card>
     )

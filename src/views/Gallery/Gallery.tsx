@@ -13,45 +13,18 @@ const Gallery = () => {
             fetch("/api/artefact", {method: "GET"}).then((response :Response) => {
                 response.json().then((jsonData) => {
                     console.log(jsonData);
-                    setArtefacts(jsonData);
+                    setArtefacts([...(jsonData as artefact[])]);
+
                 });
             });
         }
+        console.log(artefacts);
     });
-
-
-    const pieces :piece[] = [
-        {
-            image : "aaa",
-            by : "Oliver Quail",
-            id : 1
-        },
-        {
-            image : "bbb",
-            by : "Oliver Quail",
-            id : 2
-        },
-        {
-            image : "ccc",
-            by : "Oliver Quail",
-            id : 3
-        },
-        {
-            image : "ddd",
-            by : "Oliver Quail",
-            id : 4
-        },
-        {
-            image : "eee",
-            by : "Oliver Quail",
-            id : 5
-        }
-    ];
 
     return (
         <section>
             <p>Gallery</p>
-            <MiniGallery pieces={pieces} numberOfItems={3} />
+            <MiniGallery pieces={artefacts} numberOfItems={3} />
         </section>
     )
 }

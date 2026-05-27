@@ -1,22 +1,21 @@
-import type { piece } from "@/types/piece";
 import PictureCardRow from "./PictureCardRow";
 import { useEffect, useState } from "react";
+import type { artefact } from "@/types/artefact";
 
 
 interface miniGalleryProps {
-    pieces :piece[];
+    pieces :artefact[];
     numberOfItems :number;
 }
 
 const MiniGallery = (props :miniGalleryProps) => {
 
 
-    const [pieces, setPieces] = useState<piece[][]>([]);
+    const [pieces, setPieces] = useState<artefact[][]>([]);
 
     useEffect(() => {
-        let temp :piece[] = [];
-        let newPieceArray :piece[][] = [];
-        
+        let temp :artefact[] = [];
+        let newPieceArray :artefact[][] = [];
         let index = 0;
 
         while(index < props.pieces.length) {
@@ -33,10 +32,10 @@ const MiniGallery = (props :miniGalleryProps) => {
             index++;
         }
 
-
+        console.log(newPieceArray);
         setPieces(newPieceArray);
 
-    }, []);
+    }, [props.pieces]);
 
 
     return (
