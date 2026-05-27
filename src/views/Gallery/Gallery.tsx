@@ -1,6 +1,5 @@
 import MiniGallery from "@/components/user/MiniGallery";
 import type { artefact } from "@/types/artefact";
-import type { piece } from "@/types/piece";
 import { useEffect, useState } from "react";
 
 
@@ -23,7 +22,7 @@ const Gallery = () => {
 
     return (
         <section>
-            <p>Gallery</p>
+            <h1>Gallery</h1>
             <MiniGallery pieces={artefacts} numberOfItems={3} />
         </section>
     )
