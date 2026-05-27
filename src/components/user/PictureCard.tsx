@@ -15,7 +15,7 @@ const PictureCard = (props :pictureCardProps) => {
                 <CardTitle>{props.piece.name}</CardTitle>
             </CardHeader>
             <CardContent>
-                <img src={"/header.png"} />
+                <img src={props.piece.picture} />
             </CardContent>
         </Card>
     )
