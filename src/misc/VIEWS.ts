@@ -2,8 +2,8 @@
 
 const VIEWS = {
     INDEX : "/",
-    ART : "/art",
-    ARTIST : "/artist",
+    ART : "/art/*",
+    ARTIST : "/artist/*",
     GALLERY : "/gallery",
     LOGIN : "/login"
 }
