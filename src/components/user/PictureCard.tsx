@@ -17,7 +17,7 @@ const PictureCard = (props :pictureCardProps) => {
                 <CardTitle>{props.piece.name}</CardTitle>
             </CardHeader>
             <CardContent>
-                <img src={props.piece.picture} />
+                <img src={"http://" + window.location.host + "/" + props.piece.picture} />
             </CardContent>
             <CardFooter>
                 <Link to={VIEWS.ART + "\/" + props.piece.id}>View</Link>

@@ -1,3 +1,5 @@
+import MiniGallery from "@/components/user/MiniGallery";
+import type { artefact } from "@/types/artefact";
 import type { artistDetails } from "@/types/artistDetails";
 import { useEffect, useState } from "react";
 
@@ -7,6 +9,8 @@ const Artist = () => {
     const currentUrl = window.location.href;
 
     const [artist, setArtist] = useState<artistDetails | null>();
+
+    const [artefact, setArtefact] = useState<artefact[]>([]);
     
     useEffect(() => {
 
@@ -17,6 +21,14 @@ const Artist = () => {
                 response.json().then((jsonData) => {
                     console.log(jsonData);
                     setArtist(jsonData as artistDetails);
+                });
+            });
+        }
+        if(artefact.length == 0) {
+            fetch("/api/artist/" + id + "/collection", {method: "GET"}).then((response :Response) => {
+                response.json().then((jsonData) => {
+                    console.log(jsonData);
+                    setArtefact(jsonData as artefact[]);
                 });
             });
         }
@@ -36,6 +48,7 @@ const Artist = () => {
             </section>
             <section className="w-full">
                 <h2>My work</h2>
+                <MiniGallery pieces={artefact} numberOfItems={4} />
 
             </section>
 
