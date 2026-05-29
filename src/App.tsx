@@ -8,6 +8,7 @@ import Login from "./views/Login/Login"
 import NavBar from "./components/user/NavBar"
 import { createContext, useContext } from "react"
 import Footer from "./components/user/Footer"
+import SignUp from "./views/SignUp/SignUp"
 
 export function App() {
 
@@ -26,6 +27,7 @@ export function App() {
             <Route path={VIEWS.ARTIST} element={<Artist />} />
             <Route path={VIEWS.GALLERY} element={<Gallery />} />
             <Route path={VIEWS.LOGIN} element={<Login />} />
+            <Route path={VIEWS.SIGNUP} element={<SignUp />} />
           </Routes>
           <Footer />
         </BrowserRouter>

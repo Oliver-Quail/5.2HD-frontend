@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import VIEWS from "@/misc/VIEWS";
 import { useState } from "react";
+import { Link } from "react-router";
 
 
 const Login = () => {
@@ -71,6 +73,7 @@ const Login = () => {
                                 });
                             });
                         }}>Login</Button>
+                        <Link to={VIEWS.SIGNUP}><Button variant="outline">Sign up</Button></Link>
                     </CardAction>
                 </CardFooter>
             </Card>
