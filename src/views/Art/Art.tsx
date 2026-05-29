@@ -15,6 +15,11 @@ const Art = () => {
     const [artefact, setArtefact] = useState<artefact | null>();
     const [comments, setComments] = useState<comment[]>([]);
     const [hasLogginedin, setHasLoggedin] = useState<boolean>(false);
+    const [commentText, setCommentText] = useState<string>("");
+
+    const handleCommentText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCommentText(event.target.value)
+    }
     
     useEffect(() => {
 
@@ -73,8 +78,30 @@ const Art = () => {
                 {
                     hasLogginedin ? (                    
                     <section className="my-5">
-                        <Textarea />
+                        <Textarea placeholder="Your comment" value={commentText} onChange={handleCommentText} />
                         <Button className="ml-auto block" onClick={() => {
+                            
+                            var id = currentUrl.split("/")[currentUrl.split("/").length -1];
+
+                            let data = {
+                                "artefact_id": id,
+                                "text": commentText
+                            }
+
+                            fetch("/api/comment", {method: "POST", headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`}, body: JSON.stringify(data)}).then((response :Response) => {
+                                if(response.status == 400) {
+                                    alert("Invalid username or password");
+                                }
+                                
+                                response.json().then((jsonData) => {
+                                    console.log(jsonData);
+                                    //localStorage.setItem("token", jsonData["token"]);
+                                    //localStorage.setItem("name", jsonData["name"])
+                                    //console.log(localStorage.getItem("token"));
+                                });
+                            });
 
                         }}>Post</Button>
                     </section>) : (
