@@ -88,6 +88,8 @@ const Art = () => {
                                 "text": commentText
                             }
 
+                            console.log(localStorage.getItem('token'));
+
                             fetch("/api/comment", {method: "POST", headers: {
                                 'Content-Type': 'application/json',
                                 'Authorization': `Bearer ${localStorage.getItem('token')}`}, body: JSON.stringify(data)}).then((response :Response) => {
@@ -97,9 +99,8 @@ const Art = () => {
                                 
                                 response.json().then((jsonData) => {
                                     console.log(jsonData);
-                                    //localStorage.setItem("token", jsonData["token"]);
-                                    //localStorage.setItem("name", jsonData["name"])
-                                    //console.log(localStorage.getItem("token"));
+                                    setComments(jsonData as comment[]);
+                                    setCommentText("");
                                 });
                             });
 

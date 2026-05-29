@@ -9,7 +9,7 @@ const Comment = (props :commentProps) => {
 
 
     return (
-        <Card className="w-8/10 mx-auto">
+        <Card className="w-8/10 mx-auto mt-5">
             <CardHeader>
                 <CardTitle>{props.commentDetails.user.name}</CardTitle>
                 <CardDescription>{props.commentDetails.created_at}</CardDescription>
