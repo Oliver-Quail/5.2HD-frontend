@@ -2,13 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import VIEWS from "@/misc/VIEWS";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [name, setName] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const handleEmail = (event :React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
@@ -19,7 +23,7 @@ const SignUp = () => {
     };
 
     const handleName = (event :React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
+        setName(event.target.value);
     };
 
 
@@ -78,7 +82,7 @@ const SignUp = () => {
                                     alert("Invalid username or password");
                                 }
                                 else {
-
+                                    navigate(VIEWS.LOGIN);
                                 }
                                 
                             });
