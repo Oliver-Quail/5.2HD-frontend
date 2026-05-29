@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import Comment from "@/components/user/Comment";
 import VIEWS from "@/misc/VIEWS";
 import type { artefact } from "@/types/artefact";
@@ -12,6 +14,7 @@ const Art = () => {
 
     const [artefact, setArtefact] = useState<artefact | null>();
     const [comments, setComments] = useState<comment[]>([]);
+    const [hasLogginedin, setHasLoggedin] = useState<boolean>(false);
     
     useEffect(() => {
 
@@ -36,6 +39,9 @@ const Art = () => {
                     setComments(jsonData as comment[]);
                 });
             });
+        }
+        if(localStorage.getItem("token") != null) {
+            setHasLoggedin(true);
         }
     });
 
@@ -62,6 +68,24 @@ const Art = () => {
                             )
                         })
                     }
+                </section>
+                <section className="w-8/10 mx-auto">
+                {
+                    hasLogginedin ? (                    
+                    <section className="my-5">
+                        <Textarea />
+                        <Button className="ml-auto block" onClick={() => {
+
+                        }}>Post</Button>
+                    </section>) : (
+                    <section className="h-full w-full flex justify-center items-center my-5">
+                        <section>
+                            <p className="mx-auto">Login to comment</p>
+                            <Link to={VIEWS.LOGIN} className="mx-auto block w-full"><Button className="mx-auto w-full">Login</Button></Link>
+                        </section>
+                    </section>
+                    )
+                }
                 </section>
             </section>
         </section>
