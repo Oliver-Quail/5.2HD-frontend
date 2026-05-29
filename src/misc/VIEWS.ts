@@ -5,7 +5,8 @@ const VIEWS = {
     ART : "/art/*",
     ARTIST : "/artist/*",
     GALLERY : "/gallery",
-    LOGIN : "/login"
+    LOGIN : "/login",
+    SIGNUP : "/signup"
 }
 
 export default VIEWS;
